@@ -37,17 +37,18 @@ currentFile = str(config['microperimetry'])
 import pandas as pd
 import matplotlib.pyplot as plt
 
-#currentFileName=os.path.join(inputDir,onlyfiles[iFiles])
-#create stem for all output files
-#outputFileStem=os.path.join(inputDir,'output/',onlyfiles[iFiles].replace('.txt',''))
+#make the output directory
+if not os.path.exists('output/'):
+    os.makedirs('output/')
+
 #do the polar coordinate table conversion
 convertedMAIAtable=loadAndConvertMAIA_polar(currentFile)
 #compute the ring means and save to csv
 ringMeanTable=ringMeanDev(convertedMAIAtable)
-ringMeanTable.to_csv('ringMeanTable.csv')
+ringMeanTable.to_csv('output/ringMeanTable.csv')
 #do the radar plot and save to file
 radarOut=MAIAradarPlot(convertedMAIAtable)
-radarOut.savefig('radarPlot.png')
+radarOut.savefig('output/radarPlot.png')
 #do the scatter plot and save to file
 scatterOut=MAIAscatterPlot(convertedMAIAtable)
-scatterOut.savefig('scatterPlot.png')
+scatterOut.savefig('output/scatterPlot.png')
