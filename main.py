@@ -38,8 +38,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 #make the output directory
-if not os.path.exists('output/'):
-    os.makedirs('output/')
+if not os.path.exists('output'):
+    os.makedirs('output')
 
 #do the polar coordinate table conversion
 convertedMAIAtable=loadAndConvertMAIA_polar(currentFile)
