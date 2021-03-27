@@ -14,17 +14,9 @@
 import subprocess
 import os
 import json
-#get top directory path of the current git repository, under the presumption that 
-#the notebook was launched from within the repo directory
-gitRepoPath=subprocess.check_output(['git', 'rev-parse', '--show-toplevel']).decode('ascii').strip()
 
-#establish path to the OCT_scripts
-OCT_scriptsDirPath=os.path.join(gitRepoPath,'OCT_scripts')   
-
-#change to the wma_tools path, load the function set, then change back to the top directory
-os.chdir(OCT_scriptsDirPath)
-import groupMAIA
-os.chdir(gitRepoPath)
+#per Soichi's insight, this appears to be sufficient for importing 
+import OCT_scripts.groupMAIA
 
 # load inputs from config.json
 with open('config.json') as config_json:
@@ -32,7 +24,6 @@ with open('config.json') as config_json:
 
 #extrct microperimetry file path from config.json    
 currentFile = str(config['microperimetry'])
-
 
 import pandas as pd
 import matplotlib.pyplot as plt
