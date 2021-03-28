@@ -4,7 +4,7 @@
 
 #brainlife doesn't clone sub module
 #git clone https://github.com/DanNBullock/OCT_scripts.git
-git submodule init OCT_Scripts
+git submodule update --remote
 
 set -e
 set -x
