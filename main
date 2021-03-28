@@ -13,5 +13,27 @@ mkdir -p output
 
 git clone https://github.com/DanNBullock/OCT_scripts.git
 
-# run the actual python code
+set -e
+set -x
+
 singularity exec docker://brainlife/dipy:1.4.0 ./main.py
+
+# copy the plot.pngs to product.json
+cat << EOF > product.json
+{
+    "brainlife": [
+        { 
+            "type": "image/png", 
+            "name": "radarPlot",
+            "base64": "$(base64 -w 0 output/radarPlot.png)"
+        },
+        { 
+            "type": "image/png", 
+            "name": "scatterPlot",
+            "base64": "$(base64 -w 0 output/scatterPlot.png)"
+        }
+    ]
+}
+EOF
+
+echo "all done"
