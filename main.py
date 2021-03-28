@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 #
 # This file is the main python script for this app
 #
@@ -15,8 +16,7 @@ import subprocess
 import os
 import json
 
-#per Soichi's insight, this appears to be sufficient for importing 
-import OCT_scripts.groupMAIA
+from OCT_scripts import groupMAIA
 
 # load inputs from config.json
 with open('config.json') as config_json:
@@ -26,20 +26,19 @@ with open('config.json') as config_json:
 currentFile = str(config['microperimetry'])
 
 import pandas as pd
-import matplotlib.pyplot as plt
 
 #make the output directory
 if not os.path.exists('output'):
     os.makedirs('output')
 
 #do the polar coordinate table conversion
-convertedMAIAtable=loadAndConvertMAIA_polar(currentFile)
+convertedMAIAtable=groupMAIA.loadAndConvertMAIA_polar(currentFile)
 #compute the ring means and save to csv
-ringMeanTable=ringMeanDev(convertedMAIAtable)
+ringMeanTable=groupMAIA.ringMeanDev(convertedMAIAtable)
 ringMeanTable.to_csv('output/ringMeanTable.csv')
 #do the radar plot and save to file
-radarOut=MAIAradarPlot(convertedMAIAtable)
+radarOut=groupMAIA.MAIAradarPlot(convertedMAIAtable)
 radarOut.savefig('output/radarPlot.png')
 #do the scatter plot and save to file
-scatterOut=MAIAscatterPlot(convertedMAIAtable)
+scatterOut=groupMAIA.MAIAscatterPlot(convertedMAIAtable)
 scatterOut.savefig('output/scatterPlot.png')

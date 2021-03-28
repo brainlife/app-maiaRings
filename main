@@ -14,4 +14,4 @@ mkdir -p output
 git clone https://github.com/DanNBullock/OCT_scripts.git
 
 # run the actual python code
-singularity exec docker://brainlife/dipy:1.4.0 python3 main.py
+singularity exec docker://brainlife/dipy:1.4.0 ./main.py
