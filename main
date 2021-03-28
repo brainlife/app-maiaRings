@@ -3,7 +3,8 @@
 #PBS -l walltime=00:15:00
 
 #brainlife doesn't clone sub module
-git clone https://github.com/DanNBullock/OCT_scripts.git
+#git clone https://github.com/DanNBullock/OCT_scripts.git
+git submodule init OCT_Scripts
 
 set -e
 set -x
