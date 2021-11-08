@@ -38,8 +38,8 @@ ringMeanTable=groupMAIA.ringMeanDev(convertedMAIAtable)
 ringMeanTable.to_csv('output/ringMeanTable.csv')
 #do the scatter plot and save to file
 scatterOut=groupMAIA.MAIAscatterPlot(convertedMAIAtable)
-scatterOut.savefig('output/scatterPlot.png, dpi=300')
+scatterOut.savefig('output/scatterPlot.png, dpi=300', bbox_inches='tight')
 #do the radar plot and save to file
 radarOut=groupMAIA.MAIAradarPlot(convertedMAIAtable)
-radarOut.savefig('output/radarPlot.png, dpi=300')
+radarOut.savefig('output/radarPlot.png, dpi=300', bbox_inches='tight')
 
