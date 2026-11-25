@@ -2,6 +2,30 @@
 [![Run on Brainlife.io](https://img.shields.io/badge/Brainlife-bl.app.444-blue.svg)](https://doi.org/10.25663/bl.app.444)
 
 # app-template-python
+
+<!-- brainlife-app:begin (generated from the App manifest; edit the manifest, not this block) -->
+
+**Computes eccentricity-ring averages of MAIA microperimetry retinal sensitivity measurements with the OCT_scripts groupMAIA Python tools, with scatter and radar plots.**
+
+Converts the MAIA microperimetry table to polar coordinates, averages sensitivity within degree-based rings (groupMAIA.ringMeanDev) and saves ringMeanTable.csv plus scatter and radar plots, which are also shown on brainlife. The code clones github.com/DanNBullock/OCT_scripts at run time, so it needs network access. The README is an unfilled template.
+
+Run it on brainlife.io: [https://doi.org/10.25663/brainlife.app.493](https://doi.org/10.25663/brainlife.app.493)
+
+| Input | Datatype | Required | Description |
+|---|---|---|---|
+| `microperimetry` | `neuro/microperimetry` | yes | MAIA microperimetry measurement export for one eye/session. |
+
+| Output | Datatype | Description |
+|---|---|---|
+| `output` | `raw` | ringMeanTable.csv with ring-wise mean sensitivity, plus scatterPlot.png and radarPlot.png. |
+
+Runtime: container `brainlife/dipy:1.4.0`; 1 CPUs; 8 GB memory.
+
+Please cite:
+- Avesani P, McPherson B, Hayashi S, et al. The open diffusion data derivatives, brain data upcycling via integrated publishing of derivatives and reproducible open cloud services. Sci Data 6, 69 (2019). [doi:10.1038/s41597-019-0073-y](https://doi.org/10.1038/s41597-019-0073-y)
+
+<!-- brainlife-app:end -->
+
 This is a template for a python-based brainlife.io/app
 
 # app-example-documentation
